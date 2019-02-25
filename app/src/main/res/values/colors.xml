@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorPrimary">#039BE5</color>
+    <color name="colorPrimaryDark">#1E88E5</color>
+    <color name="colorAccent">#039BE5</color>
+    <color name="colorGreen">#41ba7a</color>
+
+    <color name="notification_color">#0288d1</color>
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="textColorSecondary">#757575</color>
+    <color name="errorText">#E53935</color>
+
+
+    <color name="dotinactive">#e1e1e1</color>
+
+    <array name="array_dot_active">
+        <item>@color/colorPrimary</item>
+        <item>@color/colorPrimary</item>
+        <item>@color/colorPrimary</item>
+        <item>@color/colorPrimary</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/dotinactive</item>
+        <item>@color/dotinactive</item>
+        <item>@color/dotinactive</item>
+        <item>@color/dotinactive</item>
+    </array>
+
+</resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="ld_activityScreenTitles">
+        <item>Home</item>
+        <item>Properties</item>
+        <item>Tenant/Leases</item>
+        <item>Transactions</item>
+        <item>Tasks</item>
+        <item>Reports</item>
+        <item>Inspection</item>
+        <item>Contacts/Vendors</item>
+        <item />
+        <item>Help</item>
+        <item>Feedback</item>
+        <item>Tickets</item>
+        <item>Contact Us</item>
+        <item />
+        <item>Settings</item>
+        <item>Update App</item>
+        <item>Logout</item>
+    </string-array>
+
+    <string-array name="id_buildingType">
+        <item>--Select--</item>
+        <item>Residential</item>
+        <item>Commercial</item>
+        <item>Industrial</item>
+        <item>Others</item>
+    </string-array>
+
+    <array name="ld_activityScreenIcons">
+        <item>@drawable/home</item>
+        <item>@drawable/properties</item>
+        <item>@drawable/tenant</item>
+        <item>@drawable/transactions</item>
+        <item>@drawable/tasks</item>
+        <item>@drawable/reports</item>
+        <item>@drawable/inspections</item>
+        <item>@drawable/contacts</item>
+        <item>0</item>
+        <item>@drawable/help</item>
+        <item>@drawable/feedback</item>
+        <item>@drawable/tickets</item>
+        <item>@drawable/contact_us</item>
+        <item>0</item>
+        <item>@drawable/settings</item>
+        <item>@drawable/update</item>
+        <item>@drawable/logout</item>
+    </array>
+
+</resources>
