@@ -15,10 +15,6 @@ import com.example.demo.R;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-
-/**
- * Created by whit3hawks on 11/16/16.
- */
 public class FingerprintHandler extends FingerprintManager.AuthenticationCallback {
 
 
