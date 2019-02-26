@@ -30,9 +30,12 @@ import static android.content.Context.WIFI_SERVICE;
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class Utils {
-    public static String DB_VERSION = "1";
     public static String Root_Path = "";
-    public static String DB_PATH = Root_Path + "/" + "Demo_DB/demo.db";
+    public static String DB_PATH = "";
+    public static String IMAGE_FOLDER_PATH = "";
+    public static String IMAGE_FOLDER_NAME = "DemoImages";
+    public static String DB_FOLDER_NAME = "DemoDatabase";
+    public static String DB_Name = "Demo";
     public static String MobilePattern = "[6-9][0-9]{9}";
 
     public static void setCustomTitle(AppCompatActivity activity) {
@@ -44,6 +47,7 @@ public class Utils {
         activity.getSupportActionBar().setCustomView(v);
     }
 
+    @SuppressLint("DefaultLocale")
     public static String convertToSuffix(long count) {
         if (count < 1000) return "" + count;
         int exp = (int) (Math.log(count) / Math.log(1000));
@@ -54,7 +58,7 @@ public class Utils {
         Glide.with(context).load(URL).into(view);
     }
 
-    public static String createPropertyId() throws Exception {
+    public static String createPropertyId() {
         return UUID.randomUUID().toString().replaceAll("-", "").toUpperCase();
     }
 
@@ -81,9 +85,14 @@ public class Utils {
     }
 
     public static String saveToInternalStorage(Bitmap bitmapImage, String fileName) {
-        File mypath = new File(Utils.Root_Path + "/DemoImages", fileName);
+        File directory = new File(Root_Path, "DemoImages");
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+        File mypath = new File(directory.getPath(), fileName);
         FileOutputStream fos = null;
         try {
+            bitmapImage.setDensity(72);
             fos = new FileOutputStream(mypath);
             // Use the compress method on the BitMap object to write image to the OutputStream
             bitmapImage.compress(Bitmap.CompressFormat.JPEG, 100, fos);

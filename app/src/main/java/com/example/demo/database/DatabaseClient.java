@@ -2,9 +2,9 @@ package com.example.demo.database;
 
 import android.content.Context;
 
-import com.example.demo.Utils;
-
 import androidx.room.Room;
+
+import static com.example.demo.Utils.DB_PATH;
 
 public class DatabaseClient {
 
@@ -15,7 +15,7 @@ public class DatabaseClient {
     private DatabaseClient(Context mCtx) {
         //creating the app database with Room database builder
         //MyToDos is the name of the database
-        appDatabase = Room.databaseBuilder(mCtx, AppDatabase.class, Utils.DB_PATH).build();
+        appDatabase = Room.databaseBuilder(mCtx, AppDatabase.class, DB_PATH).build();
     }
 
     public static synchronized DatabaseClient getInstance(Context mCtx) {

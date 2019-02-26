@@ -61,6 +61,7 @@ public class FingerprintsActivity extends AppCompatActivity {
              */
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
+            finish();
             textView.setText("Your Device does not have a Fingerprint Sensor");
         } else {
             // Checks whether fingerprint permission is set on manifest
@@ -73,6 +74,7 @@ public class FingerprintsActivity extends AppCompatActivity {
                     textView.setText("Register at least one fingerprint in Settings");
                     Intent intent = new Intent(this, LoginActivity.class);
                     startActivity(intent);
+                    finish();
                 } else {
                     // Checks whether lock screen security is enabled or not
                     if (!keyguardManager.isKeyguardSecure()) {

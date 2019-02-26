@@ -13,6 +13,9 @@ import com.example.demo.security.FingerprintsActivity;
 import com.github.jksiezni.permissive.PermissionsGrantedListener;
 import com.github.jksiezni.permissive.PermissionsRefusedListener;
 import com.github.jksiezni.permissive.Permissive;
+import java.io.File;
+import static com.example.demo.Utils.DB_Name;
+import static com.example.demo.Utils.Root_Path;
 
 public class Splash extends AppCompatActivity {
     @Override
@@ -49,10 +52,30 @@ public class Splash extends AppCompatActivity {
     public void setDirectoryApproach() {
         String device = Build.DEVICE.toUpperCase();
         if (device.equals("GENERIC") || device.equals("GENERIC_X86") || device.equals("SDK")) {
-            Utils.Root_Path = getFilesDir().getAbsolutePath();
+            Root_Path = getFilesDir().getAbsolutePath();
+            createDirectories();
         } else {
-            Utils.Root_Path = Environment.getExternalStorageDirectory().getAbsolutePath();
+            Root_Path = Environment.getExternalStorageDirectory().getAbsolutePath();
+            createDirectories();
         }
+    }
+
+    private void createDirectories() {
+        //DB
+        File db = new File(Root_Path, Utils.DB_FOLDER_NAME + "/" + DB_Name);
+        if (!db.exists()) {
+            db.mkdirs();
+        } else {
+            Utils.DB_PATH = db.getPath();
+        }
+        //
+        File image = new File(Root_Path, Utils.IMAGE_FOLDER_NAME);
+        if (!image.exists()) {
+            image.mkdirs();
+        } else {
+            Utils.IMAGE_FOLDER_PATH = image.getPath();
+        }
+
     }
 
 }
