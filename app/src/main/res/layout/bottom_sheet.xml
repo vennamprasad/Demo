@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -26,6 +25,7 @@
             android:contentDescription="@string/app_name"
             android:scaleType="centerCrop"
             android:src="@drawable/no_image"
+            app:imageUrl="@{PropertyDetails.imageUrl}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -52,8 +52,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/img_but_uploadImage"
-            android:orientation="vertical"
             android:layout_margin="8dp"
+            android:orientation="vertical"
             android:padding="@dimen/_5sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -76,6 +76,7 @@
                     android:paddingEnd="@dimen/_5sdp"
                     android:selectAllOnFocus="false"
                     android:singleLine="true"
+                    android:text="@{property.propertyName}"
                     android:textColorHint="@color/textColorSecondary" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -121,6 +122,7 @@
                         android:paddingStart="@dimen/_5sdp"
                         android:paddingEnd="@dimen/_5sdp"
                         android:selectAllOnFocus="false"
+                        android:text="@{property.noOfFloors}"
                         android:textColorHint="@color/textColorSecondary" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -143,6 +145,7 @@
                         android:paddingStart="@dimen/_5sdp"
                         android:paddingEnd="@dimen/_5sdp"
                         android:selectAllOnFocus="false"
+                        android:text="@{property.nameOfSecurityGuard}"
                         android:textColorHint="@color/textColorSecondary" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -164,6 +167,7 @@
                         android:paddingStart="@dimen/_5sdp"
                         android:paddingEnd="@dimen/_5sdp"
                         android:selectAllOnFocus="false"
+                        android:text="@{property.securityGuardMobileNumber}"
                         android:textColorHint="@color/textColorSecondary" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -186,6 +190,7 @@
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp"
                     android:selectAllOnFocus="false"
+                    android:text="@{property.address}"
                     android:textColorHint="@color/textColorSecondary" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>

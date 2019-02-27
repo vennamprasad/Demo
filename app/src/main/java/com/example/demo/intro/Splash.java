@@ -1,20 +1,26 @@
 package com.example.demo.intro;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.Manifest;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+
 import com.example.demo.R;
 import com.example.demo.Utils;
 import com.example.demo.security.FingerprintsActivity;
 import com.github.jksiezni.permissive.PermissionsGrantedListener;
 import com.github.jksiezni.permissive.PermissionsRefusedListener;
 import com.github.jksiezni.permissive.Permissive;
+
 import java.io.File;
+import java.io.FileOutputStream;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import static com.example.demo.Utils.DB_FOLDER_NAME;
 import static com.example.demo.Utils.DB_Name;
+import static com.example.demo.Utils.DB_PATH;
 import static com.example.demo.Utils.Root_Path;
 
 public class Splash extends AppCompatActivity {
@@ -52,29 +58,39 @@ public class Splash extends AppCompatActivity {
     public void setDirectoryApproach() {
         String device = Build.DEVICE.toUpperCase();
         if (device.equals("GENERIC") || device.equals("GENERIC_X86") || device.equals("SDK")) {
-            Root_Path = getFilesDir().getAbsolutePath();
+            Root_Path = getFilesDir().getPath();
             createDirectories();
         } else {
-            Root_Path = Environment.getExternalStorageDirectory().getAbsolutePath();
+            Root_Path = Environment.getExternalStorageDirectory().getPath();
             createDirectories();
         }
     }
 
     private void createDirectories() {
         //DB
-        File db = new File(Root_Path, Utils.DB_FOLDER_NAME + "/" + DB_Name);
-        if (!db.exists()) {
-            db.mkdirs();
-        } else {
-            Utils.DB_PATH = db.getPath();
+        try {
+            String rootPath = Root_Path + "/" + DB_FOLDER_NAME + "/";
+            File root = new File(rootPath);
+            if (!root.exists()) {
+                root.mkdirs();
+            }
+            File f = new File(rootPath + DB_Name);
+            if (!f.exists()) {
+                f.createNewFile();
+                FileOutputStream out = new FileOutputStream(f);
+                out.flush();
+                out.close();
+            }
+            DB_PATH = f.getAbsolutePath();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         //
         File image = new File(Root_Path, Utils.IMAGE_FOLDER_NAME);
         if (!image.exists()) {
             image.mkdirs();
-        } else {
-            Utils.IMAGE_FOLDER_PATH = image.getPath();
         }
+        Utils.IMAGE_FOLDER_PATH = image.getPath();
 
     }
 

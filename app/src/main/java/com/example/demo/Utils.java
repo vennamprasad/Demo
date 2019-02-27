@@ -1,14 +1,11 @@
 package com.example.demo;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -27,7 +24,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import static android.content.Context.MODE_PRIVATE;
 import static android.content.Context.WIFI_SERVICE;
-import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class Utils {
     public static String Root_Path = "";
@@ -35,7 +31,7 @@ public class Utils {
     public static String IMAGE_FOLDER_PATH = "";
     public static String IMAGE_FOLDER_NAME = "DemoImages";
     public static String DB_FOLDER_NAME = "DemoDatabase";
-    public static String DB_Name = "Demo";
+    public static String DB_Name = "Demo.db";
     public static String MobilePattern = "[6-9][0-9]{9}";
 
     public static void setCustomTitle(AppCompatActivity activity) {

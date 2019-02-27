@@ -25,4 +25,7 @@ public interface PropertyDetailsDAO {
 
     @Update
     int update(PropertyDetails property_details);
+
+    @Query("SELECT COUNT(PropertyName) FROM PropertyDetails")
+    int getNumberOfRows();
 }

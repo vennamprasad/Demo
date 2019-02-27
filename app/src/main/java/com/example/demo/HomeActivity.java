@@ -3,27 +3,28 @@ package com.example.demo;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.demo.database.DatabaseClient;
 import com.example.demo.menu.DrawerAdapter;
 import com.example.demo.menu.DrawerItem;
 import com.example.demo.menu.SimpleItem;
-
 import com.google.android.material.tabs.TabLayout;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
+import java.util.Arrays;
+
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
-import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import java.util.Arrays;
 
 public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener, DrawerAdapter.OnItemSelectedListener {
     private SlidingRootNav slidingRootNav;
@@ -82,6 +83,8 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
     private void init() {
         TextView add_property = findViewById(R.id.add_property);
+        GetCount getCount = new GetCount();
+        getCount.execute();
         TextView add_tenant = findViewById(R.id.add_tenant);
     }
 
@@ -90,6 +93,7 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
     public void onItemSelected(int position) {
         slidingRootNav.closeMenu();
     }
+
 
 
     private DrawerItem createItemFor(int position) {
@@ -143,5 +147,22 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
     public void addTenant(View view) {
         startActivity(new Intent(HomeActivity.this, AddTenant.class));
+    }
+
+    private class GetCount extends AsyncTask<Void, Void, Void> {
+        int count = 0;
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            count = DatabaseClient.getInstance(getApplicationContext()).getAppDatabase().property_details_dao().getNumberOfRows();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            TextView propertyCount = (TextView) findViewById(R.id.propertyCount);
+            propertyCount.setText(String.valueOf(count));
+        }
     }
 }

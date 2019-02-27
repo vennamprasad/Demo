@@ -1,20 +1,7 @@
 package com.example.demo.fragment;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
-
-import com.example.demo.ImagePicker;
-import com.example.demo.Utils;
-import com.example.demo.database.DatabaseClient;
-import com.example.demo.databinding.BottomSheetBinding;
-import com.example.demo.tables.PropertyDetails;
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +9,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.demo.R;
+import com.example.demo.Utils;
+import com.example.demo.database.DatabaseClient;
+import com.example.demo.databinding.BottomSheetBinding;
+import com.example.demo.tables.PropertyDetails;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.vansuita.pickimage.bean.PickResult;
 import com.vansuita.pickimage.bundle.PickSetup;
 import com.vansuita.pickimage.dialog.PickImageDialog;
@@ -29,6 +21,9 @@ import com.vansuita.pickimage.listeners.IPickCancel;
 import com.vansuita.pickimage.listeners.IPickResult;
 
 import java.util.Objects;
+
+import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 
 public class ItemListDialogFragment extends BottomSheetDialogFragment {
     private BottomSheetBinding binding;
@@ -48,6 +43,9 @@ public class ItemListDialogFragment extends BottomSheetDialogFragment {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.bottom_sheet, container, false);
         View view = binding.getRoot();
+        Bundle bundle = getArguments();
+        PropertyDetails propertyDetails = (PropertyDetails) Objects.requireNonNull(bundle).getSerializable("PROPERTY_DETAILS");
+        binding.setProperty(propertyDetails);
         binding.save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,12 +104,10 @@ public class ItemListDialogFragment extends BottomSheetDialogFragment {
         super.onDestroyView();
     }
 
-    @SuppressLint("StaticFieldLeak")
-    class SaveTask extends AsyncTask<Void, Void, Void> {
 
+    private class SaveTask extends AsyncTask {
         @Override
-        protected Void doInBackground(Void... voids) {
-            //creating a task
+        protected Object doInBackground(Object[] objects) {
             PropertyDetails property_details = new PropertyDetails();
             try {
                 property_details.setPropertyId(Utils.createPropertyId());
@@ -127,14 +123,14 @@ public class ItemListDialogFragment extends BottomSheetDialogFragment {
             property_details.setPropertyImage(ImageURL);
             //adding to database
             DatabaseClient.getInstance(getContext()).getAppDatabase().property_details_dao().insert(property_details);
-            return null;
+            return objects;
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            dismiss();
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_LONG).show();
         }
     }
-
 }
