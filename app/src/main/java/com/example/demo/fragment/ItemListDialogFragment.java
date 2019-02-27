@@ -1,10 +1,12 @@
 package com.example.demo.fragment;
 
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,12 +16,14 @@ import com.example.demo.database.DatabaseClient;
 import com.example.demo.databinding.BottomSheetBinding;
 import com.example.demo.tables.PropertyDetails;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.squareup.picasso.Picasso;
 import com.vansuita.pickimage.bean.PickResult;
 import com.vansuita.pickimage.bundle.PickSetup;
 import com.vansuita.pickimage.dialog.PickImageDialog;
 import com.vansuita.pickimage.listeners.IPickCancel;
 import com.vansuita.pickimage.listeners.IPickResult;
 
+import java.io.File;
 import java.util.Objects;
 
 import androidx.annotation.NonNull;
@@ -44,8 +48,13 @@ public class ItemListDialogFragment extends BottomSheetDialogFragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.bottom_sheet, container, false);
         View view = binding.getRoot();
         Bundle bundle = getArguments();
-        PropertyDetails propertyDetails = (PropertyDetails) Objects.requireNonNull(bundle).getSerializable("PROPERTY_DETAILS");
-        binding.setProperty(propertyDetails);
+        if (bundle != null && bundle.containsKey("PROPERTY_DETAILS")) {
+            PropertyDetails propertyDetails = (PropertyDetails) Objects.requireNonNull(bundle).getSerializable("PROPERTY_DETAILS");
+            binding.setProperty(propertyDetails);
+            Uri uri = Uri.fromFile(new File(propertyDetails.getPropertyImage()));
+            Picasso.with(getActivity()).load(uri).into(binding.imgProperty);
+            selectSpinnerValue(binding.spBuildingType, propertyDetails.getBuildingType());
+        }
         binding.save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,6 +90,14 @@ public class ItemListDialogFragment extends BottomSheetDialogFragment {
         return view;
     }
 
+    private void selectSpinnerValue(Spinner spinner, String myString) {
+        for (int i = 0; i < spinner.getCount(); i++) {
+            if (spinner.getItemAtPosition(i).toString().equals(myString)) {
+                spinner.setSelection(i);
+                break;
+            }
+        }
+    }
     private boolean validate() {
         if (Objects.requireNonNull(binding.inPropertyName.getText()).toString().equals("")) {
             binding.inPropertyName.setError("enter property name");

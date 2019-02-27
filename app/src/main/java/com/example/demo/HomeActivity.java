@@ -47,6 +47,13 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
     private Drawable[] screenIcons;
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+        GetCount getCount = new GetCount();
+        getCount.execute();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
@@ -93,7 +100,6 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
     public void onItemSelected(int position) {
         slidingRootNav.closeMenu();
     }
-
 
 
     private DrawerItem createItemFor(int position) {
