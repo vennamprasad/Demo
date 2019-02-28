@@ -18,6 +18,7 @@
         android:roundIcon="@mipmap/ic_app_notround"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".WebActivity" />
         <activity
             android:name=".security.FingerprintsActivity"
             android:label="Biometric Login" />
@@ -61,10 +62,14 @@
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.thefinestartist.finestwebview.FinestWebViewActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.com.vansuita.pickimage.provider"

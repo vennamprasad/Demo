@@ -51,6 +51,7 @@ public class ItemListDialogFragment extends BottomSheetDialogFragment {
         if (bundle != null && bundle.containsKey("PROPERTY_DETAILS")) {
             PropertyDetails propertyDetails = (PropertyDetails) Objects.requireNonNull(bundle).getSerializable("PROPERTY_DETAILS");
             binding.setProperty(propertyDetails);
+            assert propertyDetails != null;
             Uri uri = Uri.fromFile(new File(propertyDetails.getPropertyImage()));
             Picasso.with(getActivity()).load(uri).into(binding.imgProperty);
             selectSpinnerValue(binding.spBuildingType, propertyDetails.getBuildingType());
