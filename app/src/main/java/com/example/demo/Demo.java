@@ -8,7 +8,6 @@ public class Demo extends Application {
     public void onCreate() {
         super.onCreate();
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-
             @Override
             public void uncaughtException(Thread thread, Throwable throwable) {
                 Utils.showMsg(Utils.getExceptionRootMessage(throwable), Demo.this.getApplicationContext());
