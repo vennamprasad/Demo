@@ -1,5 +1,6 @@
 package com.example.demo.fragment;
 
+import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -123,6 +124,7 @@ public class ItemListDialogFragment extends BottomSheetDialogFragment {
     }
 
 
+    @SuppressLint("StaticFieldLeak")
     private class SaveTask extends AsyncTask {
         @Override
         protected Object doInBackground(Object[] objects) {
