@@ -25,7 +25,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import static android.content.Context.MODE_PRIVATE;
 import static android.content.Context.WIFI_SERVICE;
 
-public class Utils {
+public class DemoUtils {
     public static String Root_Path = "";
     public static String DB_PATH = "";
     public static String IMAGE_FOLDER_PATH = "";
@@ -34,7 +34,7 @@ public class Utils {
     public static String DB_Name = "Demo.db";
     public static String MobilePattern = "[6-9][0-9]{9}";
 
-    public static void setCustomTitle(AppCompatActivity activity) {
+    static void setCustomTitle(AppCompatActivity activity) {
         Objects.requireNonNull(activity.getSupportActionBar()).setDisplayShowCustomEnabled(true);
         activity.getSupportActionBar().setDisplayShowTitleEnabled(false);
         LayoutInflater inflator = LayoutInflater.from(activity);
@@ -54,7 +54,7 @@ public class Utils {
         Glide.with(context).load(URL).into(view);
     }
 
-    public static String createPropertyId() {
+    public static String creRowId() {
         return UUID.randomUUID().toString().replaceAll("-", "").toUpperCase();
     }
 

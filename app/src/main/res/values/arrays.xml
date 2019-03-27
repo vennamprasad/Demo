@@ -24,6 +24,14 @@
         <item>Industrial</item>
         <item>Others</item>
     </string-array>
+    <string-array name="id_profileStaus">
+        <item>--Select--</item>
+        <item>Married</item>
+        <item>Single</item>
+        <item>Widow</item>
+        <item>Divorced</item>
+    </string-array>
+
     <string-array name="loginType">
         <item>--Select--</item>
         <item>Landlord</item>

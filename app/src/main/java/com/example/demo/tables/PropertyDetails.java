@@ -24,7 +24,7 @@ public class PropertyDetails implements Serializable {
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "SecurityGuardMobileNumber")
-    private String SecurityGuardMobileNumber="";
+    private String SecurityGuardMobileNumber = "";
     @ColumnInfo(name = "PropertyImage")
     private String PropertyImage;
 

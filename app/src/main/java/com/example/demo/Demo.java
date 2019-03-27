@@ -7,10 +7,11 @@ public class Demo extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        new AppSignatureHelper(getApplicationContext()).getAppSignatures();
         Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
             @Override
             public void uncaughtException(Thread thread, Throwable throwable) {
-                Utils.showMsg(Utils.getExceptionRootMessage(throwable), Demo.this.getApplicationContext());
+                DemoUtils.showMsg(DemoUtils.getExceptionRootMessage(throwable), Demo.this.getApplicationContext());
                 System.exit(0);
             }
         });

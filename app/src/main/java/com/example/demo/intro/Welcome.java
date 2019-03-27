@@ -1,14 +1,8 @@
 package com.example.demo.intro;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -20,8 +14,13 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.demo.LoginActivity;
 import com.example.demo.R;
+import com.example.demo.utils.activity.ActivityUtils;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 public class Welcome extends AppCompatActivity {
     private ViewPager viewPager;
@@ -39,10 +38,6 @@ public class Welcome extends AppCompatActivity {
             launchHomeScreen();
             finish();
         }
-        // Making notification bar transparent
-        if (Build.VERSION.SDK_INT >= 23) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        }
         setContentView(R.layout.activity_onboard);
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
@@ -51,7 +46,6 @@ public class Welcome extends AppCompatActivity {
         // layouts of all welcome sliders
         // add few more layouts if you want
         layouts = new int[]{R.layout.introslide1, R.layout.introslide2, R.layout.introslide3,};
-
         // adding bottom dots
         addBottomDots(0);
         // making notification bar transparent

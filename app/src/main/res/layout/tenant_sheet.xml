@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="property"
-            type="com.example.demo.tables.PropertyDetails" />
+            name="tenant"
+            type="com.example.demo.tables.TenantDetails" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,11 +15,12 @@
         android:layout_height="wrap_content"
         android:background="@color/textColorPrimary"
         android:orientation="vertical"
+        android:paddingBottom="@dimen/_10sdp"
         app:behavior_hideable="true"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <ImageView
-            android:id="@+id/img_property"
+            android:id="@+id/img_tenant"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_100sdp"
             android:contentDescription="@string/app_name"
@@ -38,16 +39,16 @@
             android:layout_marginBottom="8dp"
             android:background="@drawable/round_button"
             android:contentDescription="@string/app_name"
-            app:layout_constraintBottom_toTopOf="@+id/ll_propertyDetails"
-            app:layout_constraintEnd_toEndOf="@+id/img_property"
+            app:layout_constraintBottom_toTopOf="@+id/ll_tenantDetails"
+            app:layout_constraintEnd_toEndOf="@+id/img_tenant"
             app:layout_constraintHorizontal_bias="0.954"
-            app:layout_constraintStart_toStartOf="@+id/img_property"
+            app:layout_constraintStart_toStartOf="@+id/img_tenant"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.909"
             app:srcCompat="@android:drawable/stat_sys_upload" />
 
         <LinearLayout
-            android:id="@+id/ll_propertyDetails"
+            android:id="@+id/ll_tenantDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/img_but_uploadImage"
@@ -56,7 +57,7 @@
             android:padding="@dimen/_5sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_property">
+            app:layout_constraintTop_toBottomOf="@+id/img_tenant">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -66,36 +67,58 @@
                 app:boxStrokeWidth="5dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/in_propertyName"
+                    android:id="@+id/in_tenantName"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_30sdp"
-                    android:hint="Property Name"
+                    android:hint="Tenant Name"
+                    android:inputType="textPersonName"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:maxLength="50"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:selectAllOnFocus="false"
+                    android:singleLine="true"
+                    android:text="@{tenant.tenantName}"
+                    android:textColorHint="@color/textColorSecondary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_2sdp"
+                app:boxBackgroundColor="@color/textColorPrimary"
+                app:boxStrokeWidth="5dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/in_tenantEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:maxLength="50"
+                    android:hint="Tenant Email"
                     android:inputType="textPersonName"
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp"
                     android:selectAllOnFocus="false"
                     android:singleLine="true"
-                    android:text="@{property.propertyName}"
+                    android:text="@{tenant.tenantEmail}"
                     android:textColorHint="@color/textColorSecondary" />
             </com.google.android.material.textfield.TextInputLayout>
-
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_2sdp"
-                android:hint="Building Type"
+                android:hint="Profile Type"
                 android:paddingStart="@dimen/_5sdp"
                 android:paddingEnd="@dimen/_5sdp"
                 android:singleLine="true"
                 android:textColorHint="@color/textColorSecondary" />
 
             <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/sp_buildingType"
+                android:id="@+id/sp_profileType"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_30sdp"
                 android:drawSelectorOnTop="true"
-                android:entries="@array/id_buildingType" />
+                android:entries="@array/id_profileStaus" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -115,38 +138,17 @@
                         android:id="@+id/in_noOfFloors"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_30sdp"
-                        android:hint="No of Floors"
+                        android:hint="No of Members"
                         android:inputType="phone"
+                        android:maxLength="2"
                         android:maxLines="3"
                         android:paddingStart="@dimen/_5sdp"
                         android:paddingEnd="@dimen/_5sdp"
                         android:selectAllOnFocus="false"
-                        android:text="@{property.noOfFloors}"
+                        android:text="@{tenant.numberOfMembers}"
                         android:textColorHint="@color/textColorSecondary" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/_2sdp"
-                    android:layout_marginEnd="@dimen/_2sdp"
-                    android:layout_weight="1"
-                    app:boxBackgroundColor="@color/textColorPrimary"
-                    app:boxStrokeWidth="5dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/in_securityName"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_30sdp"
-                        android:hint="Security Name"
-                        android:inputType="textPersonName"
-                        android:maxLines="3"
-                        android:paddingStart="@dimen/_5sdp"
-                        android:paddingEnd="@dimen/_5sdp"
-                        android:selectAllOnFocus="false"
-                        android:text="@{property.nameOfSecurityGuard}"
-                        android:textColorHint="@color/textColorSecondary" />
-                </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="0dp"
@@ -166,11 +168,50 @@
                         android:paddingStart="@dimen/_5sdp"
                         android:paddingEnd="@dimen/_5sdp"
                         android:selectAllOnFocus="false"
-                        android:text="@{property.securityGuardMobileNumber}"
+                        android:text="@{tenant.tenantMobile}"
                         android:textColorHint="@color/textColorSecondary" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
+
+            <RadioGroup
+                android:id="@+id/rg_gender"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:checkedButton="@id/male"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:weightSum="3">
+
+                <RadioButton
+                    android:id="@+id/male"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:text="Male" />
+
+                <RadioButton
+                    android:id="@+id/female"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:text="Female" />
+
+                <RadioButton
+                    android:id="@+id/others"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:text="Others" />
+            </RadioGroup>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -182,21 +223,22 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/in_address"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_30sdp"
+                    android:layout_height="@dimen/_40sdp"
                     android:hint="Address"
                     android:inputType="textPostalAddress"
                     android:maxLines="3"
+                    android:maxLength="150"
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp"
                     android:selectAllOnFocus="false"
-                    android:text="@{property.address}"
+                    android:text="@{tenant.address}"
                     android:textColorHint="@color/textColorSecondary" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
         <Button
             android:id="@+id/save"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="@dimen/_2sdp"
@@ -207,6 +249,6 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ll_propertyDetails" />
+            app:layout_constraintTop_toBottomOf="@+id/ll_tenantDetails" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

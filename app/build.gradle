@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.demo"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -34,7 +34,6 @@ dependencies {
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.yarolegovich:sliding-root-nav:1.1.0'
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
-    implementation 'com.facebook.android:facebook-android-sdk:4.34.0'
     implementation 'com.github.jksiezni.permissive:permissive:0.2'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
@@ -53,5 +52,5 @@ dependencies {
     implementation 'com.github.jrvansuita:PickImage:+'
 
     //webview
-    implementation 'com.thefinestartist:finestwebview:1.2.7'
+    implementation 'com.github.delight-im:Android-AdvancedWebView:v3.0.0'
 }

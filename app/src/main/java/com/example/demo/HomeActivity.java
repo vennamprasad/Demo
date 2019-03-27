@@ -61,7 +61,7 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Utils.setCustomTitle(this);
+        DemoUtils.setCustomTitle(this);
         //NAVIGATION
         slidingRootNav = new SlidingRootNavBuilder(this).withToolbarMenuToggle(toolbar).withMenuOpened(false).withContentClickableWhenMenuOpened(true).withSavedState(savedInstanceState).withMenuLayout(R.layout.menu_left_drawer).inject();
         screenIcons = loadScreenIcons();
@@ -140,7 +140,7 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 startActivity(new Intent(this, WebActivity.class));
                 break;
             case POS_Settings:
-                startActivity(new Intent(this, AddTenant.class));
+                startActivity(new Intent(this, ProfileActivity.class));
                 break;
             case POS_Update:
                 final String appPackageName = getPackageName();
@@ -222,11 +222,12 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
 
     @SuppressLint("StaticFieldLeak")
     private class GetCount extends AsyncTask<Void, Void, Void> {
-        int count = 0;
+        int property_Count = 0, tenant_Count = 0;
 
         @Override
         protected Void doInBackground(Void... voids) {
-            count = DatabaseClient.getInstance(getApplicationContext()).getAppDatabase().property_details_dao().getNumberOfRows();
+            property_Count = DatabaseClient.getInstance(getApplicationContext()).getAppDatabase().property_details_dao().getNumberOfRows();
+            tenant_Count = DatabaseClient.getInstance(getApplicationContext()).getAppDatabase().tenant_details_dao().getNumberOfRows();
             return null;
         }
 
@@ -234,7 +235,9 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             TextView propertyCount = (TextView) findViewById(R.id.propertyCount);
-            propertyCount.setText(String.valueOf(count));
+            TextView tenantCount = (TextView) findViewById(R.id.tenantCount);
+            propertyCount.setText(String.valueOf(property_Count));
+            tenantCount.setText(String.valueOf(tenant_Count));
         }
     }
 }

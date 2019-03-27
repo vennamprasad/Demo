@@ -1,5 +1,6 @@
 package com.example.demo.security;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import com.example.demo.LoginActivity;
 import com.example.demo.R;
+import com.example.demo.utils.activity.ActivityUtils;
 
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
@@ -41,6 +43,7 @@ public class FingerprintsActivity extends AppCompatActivity {
     private Cipher cipher;
     private TextView textView;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

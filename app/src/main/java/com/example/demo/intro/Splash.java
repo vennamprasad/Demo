@@ -7,8 +7,9 @@ import android.os.Bundle;
 import android.os.Environment;
 
 import com.example.demo.R;
-import com.example.demo.Utils;
+import com.example.demo.DemoUtils;
 import com.example.demo.security.FingerprintsActivity;
+import com.example.demo.utils.activity.ActivityUtils;
 import com.github.jksiezni.permissive.PermissionsGrantedListener;
 import com.github.jksiezni.permissive.PermissionsRefusedListener;
 import com.github.jksiezni.permissive.Permissive;
@@ -18,10 +19,10 @@ import java.io.FileOutputStream;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import static com.example.demo.Utils.DB_FOLDER_NAME;
-import static com.example.demo.Utils.DB_Name;
-import static com.example.demo.Utils.DB_PATH;
-import static com.example.demo.Utils.Root_Path;
+import static com.example.demo.DemoUtils.DB_FOLDER_NAME;
+import static com.example.demo.DemoUtils.DB_Name;
+import static com.example.demo.DemoUtils.DB_PATH;
+import static com.example.demo.DemoUtils.Root_Path;
 
 public class Splash extends AppCompatActivity {
     @Override
@@ -33,8 +34,7 @@ public class Splash extends AppCompatActivity {
             public void run() {
                 try {
                     sleep(4 * 1000);
-                    new Permissive.Request(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
-                            .whenPermissionsGranted(new PermissionsGrantedListener() {
+                    new Permissive.Request(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA).whenPermissionsGranted(new PermissionsGrantedListener() {
                                 @Override
                                 public void onPermissionsGranted(String[] permissions) throws SecurityException {
                                     Intent splash_intent = new Intent(Splash.this, FingerprintsActivity.class);
@@ -86,11 +86,11 @@ public class Splash extends AppCompatActivity {
             e.printStackTrace();
         }
         //
-        File image = new File(Root_Path, Utils.IMAGE_FOLDER_NAME);
+        File image = new File(Root_Path, DemoUtils.IMAGE_FOLDER_NAME);
         if (!image.exists()) {
             image.mkdirs();
         }
-        Utils.IMAGE_FOLDER_PATH = image.getPath();
+        DemoUtils.IMAGE_FOLDER_PATH = image.getPath();
 
     }
 

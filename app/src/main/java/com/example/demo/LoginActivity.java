@@ -8,6 +8,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 
 import com.example.demo.databinding.ActivityLoginBinding;
+import com.example.demo.utils.activity.ActivityUtils;
 
 import java.util.Objects;
 
@@ -38,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         binding.password.setOnEditorActionListener(editorListener);
     }
 
+
     public void login(View view) {
         // validating credentials
         if (validate()) {
@@ -58,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
             binding.password.requestFocus();
             return false;
         } else {
-            if (binding.userName.getText().toString().matches(Utils.MobilePattern)) {
+            if (binding.userName.getText().toString().matches(DemoUtils.MobilePattern)) {
                 if (binding.userName.getText().toString().length() < 10 && binding.userName.getText().toString().length() > 10) {
                     binding.userName.setError("please enter valid phone number");
                     binding.userName.requestFocus();

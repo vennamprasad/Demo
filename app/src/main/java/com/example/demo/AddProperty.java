@@ -12,12 +12,11 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import com.example.demo.adapter.CommonAdapter;
 import com.example.demo.database.DatabaseClient;
 import com.example.demo.decor.GridSpacingItemDecoration;
-import com.example.demo.fragment.ItemListDialogFragment;
+import com.example.demo.fragment.AddPropertyBottomFragment;
 import com.example.demo.tables.PropertyDetails;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -36,13 +35,14 @@ public class AddProperty extends AppCompatActivity {
     private SearchView searchView;
     CommonAdapter adapter = null;
     List<PropertyDetails> propertyDetails = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_property);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Utils.setCustomTitle(this);
+        DemoUtils.setCustomTitle(this);
         // toolbar fancy stuff
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -114,8 +114,7 @@ public class AddProperty extends AppCompatActivity {
             public void onSelected(PropertyDetails propertyDetails) {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("PROPERTY_DETAILS", propertyDetails);
-                Toast.makeText(getApplicationContext(), "Selected: " + propertyDetails.getPropertyName() + ", " + propertyDetails.getAddress(), Toast.LENGTH_LONG).show();
-                ItemListDialogFragment itemListDialogFragment = new ItemListDialogFragment();
+                AddPropertyBottomFragment itemListDialogFragment = new AddPropertyBottomFragment();
                 itemListDialogFragment.setArguments(bundle);
                 itemListDialogFragment.show(getSupportFragmentManager(), itemListDialogFragment.getTag());
             }
@@ -177,7 +176,7 @@ public class AddProperty extends AppCompatActivity {
     }
 
     private void addProperty() {
-        ItemListDialogFragment itemListDialogFragment = new ItemListDialogFragment();
+        AddPropertyBottomFragment itemListDialogFragment = new AddPropertyBottomFragment();
         itemListDialogFragment.show(getSupportFragmentManager(), itemListDialogFragment.getTag());
 
     }

@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.demo.R;
-import com.example.demo.tables.PropertyDetails;
+import com.example.demo.tables.TenantDetails;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -22,33 +22,33 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.ViewHolder> implements Filterable {
+public class CommonAdapter1 extends RecyclerView.Adapter<CommonAdapter1.ViewHolder> implements Filterable {
     private Context context;
-    private PropertyAdapterListener listener;
-    private List<PropertyDetails> propertyDetailsArrayList;
-    private List<PropertyDetails> filteredArrayList;
+    private TenantAdapterListener listener;
+    private List<TenantDetails> tenantDetailsList;
+    private List<TenantDetails> filteredArrayList;
 
-    public CommonAdapter(Context context, PropertyAdapterListener listener, List<PropertyDetails> propertyDetailsArrayList) {
+    public CommonAdapter1(Context context, TenantAdapterListener listener, List<TenantDetails> tenantDetails) {
         this.context = context;
         this.listener = listener;
-        this.propertyDetailsArrayList = propertyDetailsArrayList;
-        this.filteredArrayList = propertyDetailsArrayList;
+        this.tenantDetailsList = tenantDetails;
+        this.filteredArrayList = tenantDetails;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CommonAdapter.ViewHolder viewHolder, final int position) {
-        final PropertyDetails propertyDetails = filteredArrayList.get(position);
-        viewHolder.textView1.setText(propertyDetails.getPropertyName());
-        viewHolder.textView2.setText(propertyDetails.getAddress());
-        Uri uri = Uri.fromFile(new File(propertyDetailsArrayList.get(position).getPropertyImage()));
+    public void onBindViewHolder(@NonNull CommonAdapter1.ViewHolder viewHolder, final int position) {
+        final TenantDetails tenantDetails = filteredArrayList.get(position);
+        viewHolder.textView1.setText(tenantDetails.getTenantName());
+        viewHolder.textView2.setText(tenantDetails.getAddress());
+        Uri uri = Uri.fromFile(new File(tenantDetails.getTenantImage()));
         Picasso.with(context).load(uri).resize(100, 100).into(viewHolder.imageView);
     }
 
     @NonNull
     @Override
-    public CommonAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CommonAdapter1.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_layout, parent, false);
-        return new ViewHolder(view);
+        return new CommonAdapter1.ViewHolder(view);
     }
 
     @Override
@@ -62,11 +62,11 @@ public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.ViewHolder
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
                 FilterResults results = new FilterResults();
-                final int count = propertyDetailsArrayList.size();
-                final ArrayList<PropertyDetails> resultList = new ArrayList<>(count);
+                final int count = tenantDetailsList.size();
+                final ArrayList<TenantDetails> resultList = new ArrayList<>(count);
                 for (int i = 0; i < count; i++) {
-                    if (propertyDetailsArrayList.get(i).getPropertyName().toLowerCase().contains(constraint.toString().toLowerCase())) {
-                        resultList.add(propertyDetailsArrayList.get(i));
+                    if (tenantDetailsList.get(i).getTenantName().toLowerCase().contains(constraint.toString().toLowerCase())) {
+                        resultList.add(tenantDetailsList.get(i));
                     }
                 }
                 results.values = resultList;
@@ -76,20 +76,20 @@ public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.ViewHolder
 
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
-                filteredArrayList = (ArrayList<PropertyDetails>) results.values;
+                filteredArrayList = (ArrayList<TenantDetails>) results.values;
                 notifyDataSetChanged();
             }
         };
     }
 
-    public interface PropertyAdapterListener {
-        void onSelected(PropertyDetails propertyDetails);
+    public interface TenantAdapterListener {
+        void onSelected(TenantDetails tenantDetails);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView textView1;
-        public TextView textView2;
-        private ImageView imageView;
+        TextView textView1;
+        TextView textView2;
+        ImageView imageView;
 
         ViewHolder(View view) {
             super(view);
