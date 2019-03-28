@@ -1,9 +1,5 @@
 package com.example.demo.security;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.KeyguardManager;
@@ -19,7 +15,6 @@ import android.widget.TextView;
 
 import com.example.demo.LoginActivity;
 import com.example.demo.R;
-import com.example.demo.utils.activity.ActivityUtils;
 
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
@@ -36,6 +31,9 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
 public class FingerprintsActivity extends AppCompatActivity {
     private KeyStore keyStore;
     // Variable used for storing the key in the Android Keystore container
@@ -43,55 +41,61 @@ public class FingerprintsActivity extends AppCompatActivity {
     private Cipher cipher;
     private TextView textView;
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fingeprint);
         // Initializing both Android Keyguard Manager and Fingerprint Manager
         KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
-        FingerprintManager fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
+        FingerprintManager fingerprintManager = null;
         textView = (TextView) findViewById(R.id.errorText);
         // Check whether the device has a Fingerprint sensor.
-        if (!fingerprintManager.isHardwareDetected()) {
-            /**
-             * An error message will be displayed if the device does not contain the fingerprint hardware.
-             * However if you plan to implement a default authentication method,
-             * you can redirect the user to a default authentication activity from here.
-             * Example:
-             * Intent intent = new Intent(this, DefaultAuthenticationActivity.class);
-             * startActivity(intent);
-             */
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-            textView.setText("Your Device does not have a Fingerprint Sensor");
-        } else {
-            // Checks whether fingerprint permission is set on manifest
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
-                textView.setText("Fingerprint authentication permission not enabled");
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
+            if (!fingerprintManager.isHardwareDetected()) {
+                /**
+                 * An error message will be displayed if the device does not contain the fingerprint hardware.
+                 * However if you plan to implement a default authentication method,
+                 * you can redirect the user to a default authentication activity from here.
+                 * Example:
+                 * Intent intent = new Intent(this, DefaultAuthenticationActivity.class);
+                 * startActivity(intent);
+                 */
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+                textView.setText("Your Device does not have a Fingerprint Sensor");
             } else {
-                // Check whether at least one fingerprint is registered
-                if (!fingerprintManager.hasEnrolledFingerprints()) {
-                    textView.setText("Register at least one fingerprint in Settings");
-                    Intent intent = new Intent(this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
+                // Checks whether fingerprint permission is set on manifest
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
+                    textView.setText("Fingerprint authentication permission not enabled");
+
                 } else {
-                    // Checks whether lock screen security is enabled or not
-                    if (!keyguardManager.isKeyguardSecure()) {
-                        textView.setText("Lock screen security not enabled in Settings");
+                    // Check whether at least one fingerprint is registered
+                    if (!fingerprintManager.hasEnrolledFingerprints()) {
+                        textView.setText("Register at least one fingerprint in Settings");
+                        Intent intent = new Intent(this, LoginActivity.class);
+                        startActivity(intent);
+                        finish();
                     } else {
-                        generateKey();
-                        if (cipherInit()) {
-                            FingerprintManager.CryptoObject cryptoObject = new FingerprintManager.CryptoObject(cipher);
-                            FingerprintHandler helper = new FingerprintHandler(this);
-                            helper.startAuth(fingerprintManager, cryptoObject);
+                        // Checks whether lock screen security is enabled or not
+                        if (!keyguardManager.isKeyguardSecure()) {
+                            textView.setText("Lock screen security not enabled in Settings");
+                        } else {
+                            generateKey();
+                            if (cipherInit()) {
+                                FingerprintManager.CryptoObject cryptoObject = new FingerprintManager.CryptoObject(cipher);
+                                FingerprintHandler helper = new FingerprintHandler(this);
+                                helper.startAuth(fingerprintManager, cryptoObject);
+                            }
                         }
                     }
                 }
             }
+        } else {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
 

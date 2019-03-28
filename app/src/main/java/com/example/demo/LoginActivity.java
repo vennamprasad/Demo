@@ -8,7 +8,6 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 
 import com.example.demo.databinding.ActivityLoginBinding;
-import com.example.demo.utils.activity.ActivityUtils;
 
 import java.util.Objects;
 

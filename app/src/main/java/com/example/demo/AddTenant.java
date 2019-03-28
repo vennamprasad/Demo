@@ -13,13 +13,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.SearchView;
 
-import com.example.demo.adapter.CommonAdapter;
 import com.example.demo.adapter.CommonAdapter1;
 import com.example.demo.database.DatabaseClient;
 import com.example.demo.decor.GridSpacingItemDecoration;
-import com.example.demo.fragment.AddPropertyBottomFragment;
 import com.example.demo.fragment.AddTenantBottomFragment;
-import com.example.demo.tables.PropertyDetails;
 import com.example.demo.tables.TenantDetails;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -114,15 +111,21 @@ public class AddTenant extends AppCompatActivity {
             public void onSelected(TenantDetails tenantDetails) {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("TENANT_DETAILS", tenantDetails);
-                AddPropertyBottomFragment itemListDialogFragment = new AddPropertyBottomFragment();
-                itemListDialogFragment.setArguments(bundle);
-                itemListDialogFragment.show(getSupportFragmentManager(), itemListDialogFragment.getTag());
+                AddTenantBottomFragment addTenantBottomFragment = new AddTenantBottomFragment();
+                addTenantBottomFragment.setArguments(bundle);
+                addTenantBottomFragment.show(getSupportFragmentManager(), addTenantBottomFragment.getTag());
             }
         }
 
         GetTasks gt = new GetTasks();
         gt.execute();
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getTasks();
     }
 
 

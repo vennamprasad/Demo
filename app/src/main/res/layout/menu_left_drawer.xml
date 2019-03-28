@@ -19,9 +19,10 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:tint="@color/textColorPrimary"
+            android:contentDescription="user"
             android:src="@drawable/user"
-            android:contentDescription="user" />
+            android:tint="@color/textColorPrimary"
+            tools:srcCompat="@tools:sample/avatars[5]" />
 
         <LinearLayout
             android:layout_width="match_parent"

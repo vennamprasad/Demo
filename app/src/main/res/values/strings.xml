@@ -18,4 +18,5 @@
     <string name="activity_home_desc">You have successfully logged in with fingerprint authentication</string>
     <string name="activity_home_note">Close and re-open the app to see the fingerprint auth screen again</string>
     <string name="pick_image_intent_text">Choose Image From</string>
+    <string name="todo">TODO</string>
 </resources>

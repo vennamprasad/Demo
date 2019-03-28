@@ -37,6 +37,7 @@ public class Splash extends AppCompatActivity {
                     new Permissive.Request(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA).whenPermissionsGranted(new PermissionsGrantedListener() {
                                 @Override
                                 public void onPermissionsGranted(String[] permissions) throws SecurityException {
+
                                     Intent splash_intent = new Intent(Splash.this, FingerprintsActivity.class);
                                     startActivity(splash_intent);
                                     finish();

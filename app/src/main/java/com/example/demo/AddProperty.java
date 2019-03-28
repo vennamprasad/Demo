@@ -37,6 +37,12 @@ public class AddProperty extends AppCompatActivity {
     List<PropertyDetails> propertyDetails = null;
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        getTasks();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_property);
