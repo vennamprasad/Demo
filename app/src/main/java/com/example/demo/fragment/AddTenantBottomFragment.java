@@ -137,7 +137,7 @@ public class AddTenantBottomFragment extends BottomSheetDialogFragment {
                 tenantDetails.setTenantEmail(Objects.requireNonNull(binding.inTenantEmail.getText()).toString());
                 tenantDetails.setTenantProfileStatus(binding.spProfileType.getSelectedItem().toString());
                 tenantDetails.setNumberOfMembers(Objects.requireNonNull(binding.inNoOfFloors.getText()).toString());
-                tenantDetails.setGender(String.valueOf(binding.rgGender.getCheckedRadioButtonId()));
+                tenantDetails.setGender(String.valueOf(DemoUtils.getId(binding.rgGender)));
                 tenantDetails.setTenantMobile(Objects.requireNonNull(binding.inMobile.getText()).toString());
                 tenantDetails.setAddress(Objects.requireNonNull(binding.inAddress.getText()).toString());
                 tenantDetails.setTenantImage(ImageURL);

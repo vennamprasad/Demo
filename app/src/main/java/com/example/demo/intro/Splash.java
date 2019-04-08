@@ -2,14 +2,11 @@ package com.example.demo.intro;
 
 import android.Manifest;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 
-import com.example.demo.R;
 import com.example.demo.DemoUtils;
+import com.example.demo.R;
 import com.example.demo.security.FingerprintsActivity;
-import com.example.demo.utils.activity.ActivityUtils;
 import com.github.jksiezni.permissive.PermissionsGrantedListener;
 import com.github.jksiezni.permissive.PermissionsRefusedListener;
 import com.github.jksiezni.permissive.Permissive;
@@ -34,7 +31,10 @@ public class Splash extends AppCompatActivity {
             public void run() {
                 try {
                     sleep(4 * 1000);
-                    new Permissive.Request(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA).whenPermissionsGranted(new PermissionsGrantedListener() {
+                    new Permissive.Request(Manifest.permission.ACCESS_COARSE_LOCATION,
+                            Manifest.permission.ACCESS_FINE_LOCATION,
+                            Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            Manifest.permission.CAMERA).whenPermissionsGranted(new PermissionsGrantedListener() {
                                 @Override
                                 public void onPermissionsGranted(String[] permissions) throws SecurityException {
 
@@ -57,14 +57,8 @@ public class Splash extends AppCompatActivity {
     }
 
     public void setDirectoryApproach() {
-        String device = Build.DEVICE.toUpperCase();
-        if (device.equals("GENERIC") || device.equals("GENERIC_X86") || device.equals("SDK")) {
             Root_Path = getFilesDir().getPath();
             createDirectories();
-        } else {
-            Root_Path = Environment.getExternalStorageDirectory().getPath();
-            createDirectories();
-        }
     }
 
     private void createDirectories() {

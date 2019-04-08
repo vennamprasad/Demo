@@ -58,6 +58,11 @@ public class DemoUtils {
         return UUID.randomUUID().toString().replaceAll("-", "").toUpperCase();
     }
 
+    @SuppressLint("ResourceType")
+    public static String getId(View view) {
+        if (view.getId() == 0xffffffff) return "no-id";
+        else return view.getResources().getResourceName(view.getId());
+    }
     @SuppressLint("HardwareIds")
     public static String getMacAddress(Context context) {
         String result = "";
