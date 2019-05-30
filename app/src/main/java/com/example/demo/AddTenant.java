@@ -49,7 +49,7 @@ public class AddTenant extends AppCompatActivity {
         swipeRefreshLayout = findViewById(R.id.swipe_container);
         // Configure the refreshing colors
         swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
-        recyclerView = (RecyclerView) findViewById(R.id.RecyclerView);
+        recyclerView = findViewById(R.id.RecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(3, dpToPx(), true));
         getTasks();

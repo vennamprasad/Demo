@@ -48,6 +48,7 @@ public class AddPropertyBottomFragment extends BottomSheetDialogFragment {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.property_sheet, container, false);
         View view = binding.getRoot();
+        setStyle(STYLE_NORMAL, R.style.BottomSheetDialogTheme);
         Bundle bundle = getArguments();
         if (bundle != null && bundle.containsKey("PROPERTY_DETAILS")) {
             PropertyDetails propertyDetails = (PropertyDetails) Objects.requireNonNull(bundle).getSerializable("PROPERTY_DETAILS");
@@ -55,7 +56,7 @@ public class AddPropertyBottomFragment extends BottomSheetDialogFragment {
             assert propertyDetails != null;
             ImageURL = new File(propertyDetails.getPropertyImage()).getPath();
             Uri uri = Uri.fromFile(new File(propertyDetails.getPropertyImage()));
-            Picasso.with(getActivity()).load(uri).into(binding.imgProperty);
+            Picasso.get().load(uri).into(binding.imgProperty);
             selectSpinnerValue(binding.spBuildingType, propertyDetails.getBuildingType());
         }
         binding.save.setOnClickListener(new View.OnClickListener() {

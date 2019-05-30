@@ -19,4 +19,26 @@
     <string name="activity_home_note">Close and re-open the app to see the fingerprint auth screen again</string>
     <string name="pick_image_intent_text">Choose Image From</string>
     <string name="todo">TODO</string>
+    <string name="add_item">Add your first note</string>
+    <string name="enter_item">Your Note</string>
+    <string name="hint_item">Enter Note</string>
+    <string name="noteDetail_hint">Enter Note Detail</string>
+    <string name="save_title">Save</string>
+    <string name="title_activity_list">Note List</string>
+    <string name="sure_text">Are You Sure?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="details_activity">Note Details</string>
+    <string name="date">Date :</string>
+    <string name="notedetails">Detail :</string>
+    <string name="note_name">NoteName</string>
+    <string name="save_note">Save Note</string>
+    <string name="add_new_note">Add New Note</string>
+    <string name="note_title">Note Title</string>
+    <string name="detail">Detail</string>
+    <string name="reminder">Reminder</string>
+    <string name="schedule">Schedule</string>
+    <string name="desc">it will give you the bunch of examples</string>
+    <string name="email">Email ID</string>
+    <string name="password">Password</string>
 </resources>

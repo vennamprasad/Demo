@@ -1,15 +1,15 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+   <!-- <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        &lt;!&ndash; Customize your theme here. &ndash;&gt;
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="textInputStyle">@style/AppTextField</item>
         <item name="android:fontFamily">@font/karla</item>
         <item name="android:textSize">@dimen/_10sdp</item>
-    </style>
+    </style>-->
 
     <style name="AppTextField" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxBackgroundColor">@android:color/white</item>
@@ -24,4 +24,44 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="textInputStyle">@style/AppTextField</item>
+        <item name="android:fontFamily">@font/karla</item>
+        <item name="android:textSize">@dimen/_10sdp</item>
+        <!--<item name="android:fontFamily">@font/open_sans</item>-->
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+        <item name="bottomSheetDialogTheme">@style/BottomSheetDialogTheme</item>
+        <item name="alertDialogTheme">@style/AlertDialogTheme</item>]
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!--bottom sheet theme-->
+    <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/background_bottomsheet</item>
+    </style>
+
+    <style name="BaseBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+    </style>
+
+    <style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog" />
+
+    <style name="NavButtonPadding" parent="@android:style/Widget.ActionButton">
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:actionBarStyle">@style/Widget.MaterialComponents.BottomAppBar</item>
+    </style>
+
+    <!-- AlertDialog theme-->
+    <style name="AlertDialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <item name="colorAccent">@color/blackShadeDark</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
 </resources>

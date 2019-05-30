@@ -59,7 +59,7 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DemoUtils.setCustomTitle(this);
         //NAVIGATION
@@ -137,7 +137,7 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 }
                 break;
             case POS_Contact_Us:
-                startActivity(new Intent(this, WebActivity.class));
+                startActivity(new Intent(this, ResponsiveLoginActivity.class));
                 break;
             case POS_Settings:
                 startActivity(new Intent(this, ProfileActivity.class));
@@ -234,8 +234,8 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            TextView propertyCount = (TextView) findViewById(R.id.propertyCount);
-            TextView tenantCount = (TextView) findViewById(R.id.tenantCount);
+            TextView propertyCount = findViewById(R.id.propertyCount);
+            TextView tenantCount = findViewById(R.id.tenantCount);
             propertyCount.setText(String.valueOf(property_Count));
             tenantCount.setText(String.valueOf(tenant_Count));
         }

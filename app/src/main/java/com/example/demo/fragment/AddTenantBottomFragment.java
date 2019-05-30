@@ -48,6 +48,7 @@ public class AddTenantBottomFragment extends BottomSheetDialogFragment {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.tenant_sheet, container, false);
         View view = binding.getRoot();
+        setStyle(STYLE_NORMAL, R.style.BottomSheetDialogTheme);
         Bundle bundle = getArguments();
         if (bundle != null && bundle.containsKey("TENANT_DETAILS")) {
             TenantDetails tenantDetails = (TenantDetails) Objects.requireNonNull(bundle).getSerializable("TENANT_DETAILS");
@@ -55,7 +56,7 @@ public class AddTenantBottomFragment extends BottomSheetDialogFragment {
             assert tenantDetails != null;
             ImageURL = new File(tenantDetails.getTenantImage()).getPath();
             Uri uri = Uri.fromFile(new File(tenantDetails.getTenantImage()));
-            Picasso.with(getActivity()).load(uri).into(binding.imgTenant);
+            Picasso.get().load(uri).into(binding.imgTenant);
             selectSpinnerValue(binding.spProfileType, tenantDetails.getTenantProfileStatus());
         }
         binding.save.setOnClickListener(new View.OnClickListener() {

@@ -48,7 +48,7 @@ public class FingerprintsActivity extends AppCompatActivity {
         // Initializing both Android Keyguard Manager and Fingerprint Manager
         KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
         FingerprintManager fingerprintManager = null;
-        textView = (TextView) findViewById(R.id.errorText);
+        textView = findViewById(R.id.errorText);
         // Check whether the device has a Fingerprint sensor.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <color name="colorPrimary">#039BE5</color>
     <color name="colorPrimaryDark">#1E88E5</color>
     <color name="colorAccent">#039BE5</color>
     <color name="colorGreen">#41ba7a</color>
-
     <color name="notification_color">#0288d1</color>
     <color name="textColorPrimary">#FFFFFF</color>
     <color name="textColorSecondary">#757575</color>
@@ -51,5 +50,13 @@
     <color name="khakhi">#5a5959</color>
     <color name="bluesilk">#488AC7</color>
     <color name="lightblue">#728FCE</color>
-
+    <color name="blackShadeDark">#080808</color>
+    <color name="blackShadeLight">#343434</color>
+    <color name="lightOrange">#FFF9F3</color>
+    <color name="colorPrimary1">#000000</color>
+    <color name="colorPrimaryDark1">#212121</color>
+    <color name="colorAccent1">#2ecc71</color>
+    <color name="primaryTextColor">#050505</color>
+    <color name="secondaryTextColor">#313131</color>
+    <color name="primaryBgColor">#ffffff</color>
 </resources>

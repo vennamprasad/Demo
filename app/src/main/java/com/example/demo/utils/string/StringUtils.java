@@ -15,7 +15,7 @@ public class StringUtils {
      * @return the string
      */
     public static String removeLastChar(String stringText, String endingChar) {
-        if (!stringText.equals("") && stringText != null) {
+        if (!stringText.equals("")) {
             if (stringText.endsWith(endingChar)) {
                 stringText = stringText.substring(0, stringText.length() - 1);
             }

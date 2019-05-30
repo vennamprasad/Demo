@@ -1,11 +1,11 @@
 package com.example.demo.tables;
 
-import java.io.Serializable;
-
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+
+import java.io.Serializable;
 
 @Entity(tableName = "PropertyDetails")
 public class PropertyDetails implements Serializable {

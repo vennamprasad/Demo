@@ -41,7 +41,7 @@ public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.ViewHolder
         viewHolder.textView1.setText(propertyDetails.getPropertyName());
         viewHolder.textView2.setText(propertyDetails.getAddress());
         Uri uri = Uri.fromFile(new File(propertyDetailsArrayList.get(position).getPropertyImage()));
-        Picasso.with(context).load(uri).resize(100, 100).into(viewHolder.imageView);
+        Picasso.get().load(uri).resize(100, 100).into(viewHolder.imageView);
     }
 
     @NonNull
@@ -93,8 +93,8 @@ public class CommonAdapter extends RecyclerView.Adapter<CommonAdapter.ViewHolder
 
         ViewHolder(View view) {
             super(view);
-            textView1 = (TextView) view.findViewById(R.id.textView1);
-            textView2 = (TextView) view.findViewById(R.id.textView2);
+            textView1 = view.findViewById(R.id.textView1);
+            textView2 = view.findViewById(R.id.textView2);
             imageView = (CircleImageView) view.findViewById(R.id.imageView);
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
