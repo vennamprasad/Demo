@@ -11,7 +11,12 @@ import android.os.Bundle;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyPermanentlyInvalidatedException;
 import android.security.keystore.KeyProperties;
+import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.app.ActivityCompat;
 
 import com.example.demo.LoginActivity;
 import com.example.demo.R;
@@ -31,15 +36,12 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
 public class FingerprintsActivity extends AppCompatActivity {
-    private KeyStore keyStore;
     // Variable used for storing the key in the Android Keystore container
     private static final String KEY_NAME = "Demo";
+    AppCompatButton tryOtherWay;
+    private KeyStore keyStore;
     private Cipher cipher;
-    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,15 @@ public class FingerprintsActivity extends AppCompatActivity {
         // Initializing both Android Keyguard Manager and Fingerprint Manager
         KeyguardManager keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
         FingerprintManager fingerprintManager = null;
-        textView = findViewById(R.id.errorText);
+        TextView textView = findViewById(R.id.errorText);
+        tryOtherWay = findViewById(R.id.tryOtherWay);
+        tryOtherWay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FingerprintsActivity.this, LoginActivity.class));
+                finish();
+            }
+        });
         // Check whether the device has a Fingerprint sensor.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);

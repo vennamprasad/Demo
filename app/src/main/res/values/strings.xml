@@ -41,4 +41,5 @@
     <string name="desc">it will give you the bunch of examples</string>
     <string name="email">Email ID</string>
     <string name="password">Password</string>
+    <string name="copy_right" translatable="false">Copyrights ©</string>
 </resources>

@@ -11,6 +11,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.demo.database.DatabaseClient;
 import com.example.demo.menu.DrawerAdapter;
 import com.example.demo.menu.DrawerItem;
@@ -21,17 +30,7 @@ import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
 import java.util.Arrays;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.ColorRes;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener, DrawerAdapter.OnItemSelectedListener {
-    private SlidingRootNav slidingRootNav;
     private static final int POS_Home = 0;
     private static final int POS_Properties = 1;
     private static final int POS_Tenant = 2;
@@ -39,12 +38,13 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
     private static final int POS_Reports = 4;
     private static final int POS_Inspection = 5;
     private static final int POS_Contacts = 6;
-    private static final int POS_Help = 7;
+    private static final int POS_About = 7;
     private static final int POS_Feedback = 8;
     private static final int POS_Contact_Us = 9;
     private static final int POS_Settings = 10;
     private static final int POS_Update = 11;
     private static final int POS_Logout = 12;
+    private SlidingRootNav slidingRootNav;
     private String[] screenTitles;
     private Drawable[] screenIcons;
 
@@ -74,7 +74,7 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 createItemFor(POS_Reports),
                 createItemFor(POS_Inspection),
                 createItemFor(POS_Contacts),
-                createItemFor(POS_Help),
+                createItemFor(POS_About),
                 createItemFor(POS_Feedback),
                 createItemFor(POS_Contact_Us),
                 createItemFor(POS_Settings),
@@ -120,8 +120,8 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
             case POS_Contacts:
                 startActivity(new Intent(this, AddTenant.class));
                 break;
-            case POS_Help:
-                startActivity(new Intent(this, AddTenant.class));
+            case POS_About:
+                startActivity(new Intent(this, AboutActivity.class));
                 break;
             case POS_Feedback:
                 Uri uri = Uri.parse("market://details?id=" + getApplicationContext().getPackageName());
@@ -155,7 +155,8 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
                 //clearing Pref
                 clearPreferences();
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.setClass(this, LoginActivity.class);
+                intent.setClass(HomeActivity.this, LoginActivity.class);
+                startActivity(intent);
                 break;
         }
 

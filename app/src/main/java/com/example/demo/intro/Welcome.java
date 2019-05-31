@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,14 +20,18 @@ import com.example.demo.utils.activity.ActivityUtils;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-public class Welcome extends AppCompatActivity {
+import javax.xml.transform.ErrorListener;
+import javax.xml.transform.TransformerException;
+
+public class Welcome extends AppCompatActivity implements ErrorListener {
     private ViewPager viewPager;
     private LinearLayout dotsLayout;
     private int[] layouts;
-    private Button btnSkip, btnNext;
+    private AppCompatTextView btnSkip, btnNext;
     private PrefManager prefManager;
 
     @Override
@@ -138,6 +143,21 @@ public class Welcome extends AppCompatActivity {
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(Color.TRANSPARENT);
+    }
+
+    @Override
+    public void warning(TransformerException exception) throws TransformerException {
+
+    }
+
+    @Override
+    public void error(TransformerException exception) throws TransformerException {
+
+    }
+
+    @Override
+    public void fatalError(TransformerException exception) throws TransformerException {
+
     }
 
     /**

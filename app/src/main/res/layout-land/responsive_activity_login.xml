@@ -67,6 +67,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/cornered_button"
                     android:text="Know more"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
                     android:textColor="@color/white" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -77,6 +79,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/cornered_button"
                     android:text="Join Us"
+                    android:textStyle="bold"
+                    android:textAllCaps="false"
                     android:textColor="@color/white" />
 
 
@@ -148,6 +152,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_short"
                     android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
                     android:background="@drawable/cornered_button"
                     android:text="Login" />
 

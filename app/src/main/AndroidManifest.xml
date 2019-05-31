@@ -23,20 +23,17 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
             android:name=".ProfileActivity"
-            android:label="Profile"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".WebActivity" />
+            android:label="Profile" />
+        <activity android:name=".AboutActivity" />
         <activity
             android:name=".security.FingerprintsActivity"
             android:label="Biometric Login" />
         <activity
             android:name=".AddTenant"
-            android:label="@string/title_activity_add_tenant"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_add_tenant" />
         <activity
             android:name=".AddProperty"
-            android:label="@string/title_activity_add_property"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_add_property" />
         <activity android:name=".intro.Welcome">
             <meta-data
                 android:name="android.app.searchable"
@@ -51,22 +48,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".intro.Splash"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ForgotActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".RegisterActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".intro.Splash" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".ForgotActivity" />
+        <activity android:name=".RegisterActivity" />
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="@string/title_activity_home" />
 
         <meta-data
             android:name="preloaded_fonts"

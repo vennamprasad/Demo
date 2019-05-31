@@ -17,9 +17,9 @@
         android:orientation="vertical"
         android:paddingBottom="@dimen/_10sdp"
         app:behavior_hideable="true"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+        app:layout_behavior="@string/bottom_sheet_behavior">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_tenant"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_100sdp"
@@ -30,7 +30,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/img_but_uploadImage"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
@@ -61,46 +61,59 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_2sdp"
-                app:boxBackgroundColor="@color/textColorPrimary"
-                app:boxStrokeWidth="5dp">
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/margin_short"
+                android:textColorHint="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/in_tenantName"
+                    android:id="@+id/email"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_30sdp"
-                    android:hint="Tenant Name"
-                    android:inputType="textPersonName"
-                    android:paddingStart="@dimen/_5sdp"
-                    android:maxLength="100"
-                    android:paddingEnd="@dimen/_5sdp"
-                    android:selectAllOnFocus="false"
-                    android:singleLine="true"
-                    android:text="@{tenant.tenantName}"
-                    android:textColorHint="@color/textColorSecondary" />
+                    android:layout_height="wrap_content"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:paddingBottom="16dp" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_2sdp"
-                app:boxBackgroundColor="@color/textColorPrimary"
-                app:boxStrokeWidth="5dp">
+                android:textColorHint="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/in_tenantEmail"
+                    android:id="@+id/in_tenantName"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_30sdp"
-                    android:maxLength="50"
-                    android:hint="Tenant Email"
-                    android:inputType="textEmailAddress"
+                    android:layout_height="@dimen/_40sdp"
+                    android:hint="Tenant Name"
+                    android:inputType="textPersonName"
+                    android:maxLength="100"
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp"
                     android:selectAllOnFocus="false"
                     android:singleLine="true"
-                    android:text="@{tenant.tenantEmail}"
-                    android:textColorHint="@color/textColorSecondary" />
+                    android:text="@{tenant.tenantName}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_2sdp"
+                android:textColorHint="@color/colorAccent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/in_tenantEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:hint="Tenant Email"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="50"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:selectAllOnFocus="false"
+                    android:singleLine="true"
+                    android:text="@{tenant.tenantEmail}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -116,7 +129,7 @@
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/sp_profileType"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp"
+                android:layout_height="@dimen/_40sdp"
                 android:drawSelectorOnTop="true"
                 android:entries="@array/id_profileStaus" />
 
@@ -131,21 +144,19 @@
                     android:layout_height="match_parent"
                     android:layout_marginEnd="@dimen/_2sdp"
                     android:layout_weight="1"
-                    app:boxBackgroundColor="@color/textColorPrimary"
-                    app:boxStrokeWidth="5dp">
+                    android:textColorHint="@color/colorAccent">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/in_noOfFloors"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_30sdp"
+                        android:layout_height="@dimen/_40sdp"
                         android:hint="No of Members"
                         android:inputType="phone"
                         android:maxLength="2"
                         android:paddingStart="@dimen/_5sdp"
                         android:paddingEnd="@dimen/_5sdp"
                         android:selectAllOnFocus="false"
-                        android:text="@{tenant.numberOfMembers}"
-                        android:textColorHint="@color/textColorSecondary" />
+                        android:text="@{tenant.numberOfMembers}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -154,21 +165,19 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/_2sdp"
                     android:layout_weight="1"
-                    app:boxBackgroundColor="@color/textColorPrimary"
-                    app:boxStrokeWidth="5dp">
+                    android:textColorHint="@color/colorAccent">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/in_mobile"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_30sdp"
+                        android:layout_height="@dimen/_40sdp"
                         android:hint="Mobile"
                         android:inputType="phone"
                         android:maxLength="10"
                         android:paddingStart="@dimen/_5sdp"
                         android:paddingEnd="@dimen/_5sdp"
                         android:selectAllOnFocus="false"
-                        android:text="@{tenant.tenantMobile}"
-                        android:textColorHint="@color/textColorSecondary" />
+                        android:text="@{tenant.tenantMobile}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -184,7 +193,7 @@
                 android:paddingEnd="@dimen/_5sdp"
                 android:weightSum="3">
 
-                <RadioButton
+                <com.google.android.material.radiobutton.MaterialRadioButton
                     android:id="@+id/male"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -193,7 +202,7 @@
                     android:paddingEnd="@dimen/_5sdp"
                     android:text="Male" />
 
-                <RadioButton
+                <com.google.android.material.radiobutton.MaterialRadioButton
                     android:id="@+id/female"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -202,7 +211,7 @@
                     android:paddingEnd="@dimen/_5sdp"
                     android:text="Female" />
 
-                <RadioButton
+                <com.google.android.material.radiobutton.MaterialRadioButton
                     android:id="@+id/others"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -216,8 +225,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_2sdp"
-                app:boxBackgroundColor="@color/textColorPrimary"
-                app:boxStrokeWidth="5dp">
+                android:textColorHint="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/in_address"
@@ -225,17 +233,16 @@
                     android:layout_height="@dimen/_40sdp"
                     android:hint="Address"
                     android:inputType="textPostalAddress"
-                    android:maxLines="3"
                     android:maxLength="150"
+                    android:maxLines="3"
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp"
                     android:selectAllOnFocus="false"
-                    android:text="@{tenant.address}"
-                    android:textColorHint="@color/textColorSecondary" />
+                    android:text="@{tenant.address}" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/save"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"

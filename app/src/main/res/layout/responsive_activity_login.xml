@@ -28,9 +28,9 @@
                 android:layout_height="wrap_content"
                 android:drawablePadding="10dp"
                 android:text="UI Templates"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_20sdp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
                 android:textStyle="bold" />
 
             <View
@@ -49,8 +49,8 @@
                 android:layout_margin="@dimen/margin_default"
                 android:gravity="center"
                 android:padding="@dimen/margin_short"
-                android:textColor="@color/white"
-                android:text="@string/desc" />
+                android:text="@string/desc"
+                android:textColor="@color/white" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -66,9 +66,11 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_short"
                     android:layout_weight="1"
-                    android:textColor="@color/white"
                     android:background="@drawable/cornered_button"
-                    android:text="Know more" />
+                    android:text="Know more"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/signUp"
@@ -76,9 +78,11 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_short"
                     android:layout_weight="1"
-                    android:textColor="@color/white"
                     android:background="@drawable/cornered_button"
-                    android:text="Join Us" />
+                    android:text="Join Us"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
 
             </LinearLayout>
@@ -149,9 +153,10 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_short"
                     android:layout_weight="1"
-                    android:textColor="@color/white"
                     android:background="@drawable/cornered_button"
-                    android:text="Login" />
+                    android:text="Login"
+                    android:textStyle="bold"
+                    android:textColor="@color/white" />
 
 
             </LinearLayout>
