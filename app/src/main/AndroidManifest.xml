@@ -29,10 +29,10 @@
             android:name=".security.FingerprintsActivity"
             android:label="Biometric Login" />
         <activity
-            android:name=".AddTenant"
+            android:name=".AddTenantActivity"
             android:label="@string/title_activity_add_tenant" />
         <activity
-            android:name=".AddProperty"
+            android:name=".AddPropertyActivity"
             android:label="@string/title_activity_add_property" />
         <activity android:name=".intro.Welcome">
             <meta-data

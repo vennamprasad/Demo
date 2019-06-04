@@ -16,6 +16,7 @@ public class AboutActivity extends AppCompatActivity {
         Element adsElement = new Element();
         adsElement.setTitle("home automation solutions for tenants and property managers");
         View aboutPage = new AboutPage(this)
+                .setCustomFont(String.valueOf(R.font.open_sans))
                 .isRTL(false)
                 .setImage(R.drawable.about)
                 .addItem(new Element().setTitle(BuildConfig.VERSION_NAME))

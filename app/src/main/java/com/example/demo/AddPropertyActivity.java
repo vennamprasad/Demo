@@ -13,6 +13,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.SearchView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.example.demo.adapter.CommonAdapter;
 import com.example.demo.database.DatabaseClient;
 import com.example.demo.decor.GridSpacingItemDecoration;
@@ -23,13 +29,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
 import java.util.Objects;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-public class AddProperty extends AppCompatActivity {
+public class AddPropertyActivity extends AppCompatActivity {
     SwipeRefreshLayout swipeRefreshLayout = null;
     RecyclerView recyclerView = null;
     private SearchView searchView;
@@ -95,7 +95,7 @@ public class AddProperty extends AppCompatActivity {
             @Override
             protected void onPostExecute(List<PropertyDetails> propertyDetails) {
                 super.onPostExecute(propertyDetails);
-                adapter = new CommonAdapter(AddProperty.this, this, propertyDetails);
+                adapter = new CommonAdapter(AddPropertyActivity.this, this, propertyDetails);
                 recyclerView.setAdapter(adapter);
                 // row click listener
                 recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {

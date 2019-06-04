@@ -103,22 +103,22 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
         Fragment fragment = new Fragment();
         switch (position) {
             case POS_Properties:
-                startActivity(new Intent(this, AddProperty.class));
+                startActivity(new Intent(this, AddPropertyActivity.class));
                 break;
             case POS_Tenant:
-                startActivity(new Intent(this, AddTenant.class));
+                startActivity(new Intent(this, AddTenantActivity.class));
                 break;
             case POS_Transactions:
-                startActivity(new Intent(this, AddTenant.class));
+                startActivity(new Intent(this, AddTenantActivity.class));
                 break;
             case POS_Reports:
-                startActivity(new Intent(this, AddTenant.class));
+                startActivity(new Intent(this, AddTenantActivity.class));
                 break;
             case POS_Inspection:
-                startActivity(new Intent(this, AddTenant.class));
+                startActivity(new Intent(this, AddTenantActivity.class));
                 break;
             case POS_Contacts:
-                startActivity(new Intent(this, AddTenant.class));
+                startActivity(new Intent(this, AddTenantActivity.class));
                 break;
             case POS_About:
                 startActivity(new Intent(this, AboutActivity.class));
@@ -214,11 +214,11 @@ public class HomeActivity extends AppCompatActivity implements TabLayout.OnTabSe
     }
 
     public void addProperty(View view) {
-        startActivity(new Intent(HomeActivity.this, AddProperty.class));
+        startActivity(new Intent(HomeActivity.this, AddPropertyActivity.class));
     }
 
     public void addTenant(View view) {
-        startActivity(new Intent(HomeActivity.this, AddTenant.class));
+        startActivity(new Intent(HomeActivity.this, AddTenantActivity.class));
     }
 
     @SuppressLint("StaticFieldLeak")
